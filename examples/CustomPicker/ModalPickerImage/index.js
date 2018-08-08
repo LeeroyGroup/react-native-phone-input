@@ -11,11 +11,15 @@ import {
     ScrollView,
     TouchableOpacity,
     Platform,
-    Image
+    Image,
+    ViewPropTypes
 } from 'react-native';
 
 import styles from './style';
 import BaseComponent from './BaseComponent';
+
+// if ViewPropTypes is not defined fall back to View.propType (to support RN < 0.44)
+const viewPropTypes = ViewPropTypes || View.propTypes;
 
 let componentIndex = 0;
 
@@ -23,15 +27,15 @@ const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: View.propTypes.style,
-    selectStyle: View.propTypes.style,
-    optionStyle: View.propTypes.style,
+    style: viewPropTypes.style,
+    selectStyle: viewPropTypes.style,
+    optionStyle: viewPropTypes.style,
     optionTextStyle: Text.propTypes.style,
-    sectionStyle: View.propTypes.style,
+    sectionStyle: viewPropTypes.style,
     sectionTextStyle: Text.propTypes.style,
-    cancelStyle: View.propTypes.style,
+    cancelStyle: viewPropTypes.style,
     cancelTextStyle: Text.propTypes.style,
-    overlayStyle: View.propTypes.style,
+    overlayStyle: viewPropTypes.style,
     cancelText: PropTypes.string
 };
 
